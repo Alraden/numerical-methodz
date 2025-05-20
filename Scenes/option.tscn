@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2bao81prw3et"]
+
+[ext_resource type="Script" uid="uid://gn76o1gkn0lp" path="res://option.gd" id="1_oxlww"]
+[ext_resource type="AudioStream" uid="uid://foxlspb4th6s" path="res://Assets/sfx/Options.ogg" id="2_hmytp"]
+
+[node name="Option" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oxlww")
+
+[node name="Bg_color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Safe_container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="Menu_box" type="VBoxContainer" parent="Safe_container"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="Safe_container/Menu_box"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button" type="Button" parent="Safe_container/Menu_box/Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+
+[node name="Headr" type="VBoxContainer" parent="Safe_container/Menu_box"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Title" type="Label" parent="Safe_container/Menu_box/Headr"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "ROOT FINDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="Label" parent="Safe_container/Menu_box/Headr"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "BY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title3" type="RichTextLabel" parent="Safe_container/Menu_box/Headr"]
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 27
+bbcode_enabled = true
+text = "[center][wave freq=6.0 amp=12.0]
+[b]Alrhaden Javier[/b]
+[/wave][/center]
+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bot" type="VBoxContainer" parent="Safe_container/Menu_box"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Title4" type="Label" parent="Safe_container/Menu_box/bot"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "This Application is still in development..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hmytp")
+volume_db = 1.0
+autoplay = true
+
+[connection signal="pressed" from="Safe_container/Menu_box/Menu/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,223 @@
+[gd_scene load_steps=12 format=3 uid="uid://2geasjwirijk"]
+
+[ext_resource type="Texture2D" uid="uid://btg3gux4ufbfm" path="res://Assets/Imgs/newton.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://b1oddleoreqgo" path="res://Scripts/main_menu.gd" id="1_qe12f"]
+[ext_resource type="Texture2D" uid="uid://dymni88fraojx" path="res://Assets/Imgs/Bisect.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://c5y7k57g20qhb" path="res://Assets/Imgs/secant.png" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://byxh313l738we" path="res://Assets/Imgs/false.png" id="4_glbon"]
+[ext_resource type="Texture2D" uid="uid://b4hina2audc4q" path="res://Assets/Imgs/fixed.png" id="5_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://dp2b8dcouyg3i" path="res://Assets/Imgs/options.png" id="6_nlkkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy7ct"]
+bg_color = Color(0.6, 0.6, 0.6, 0.270588)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_qe12f"]
+Button/styles/focus = SubResource("StyleBoxEmpty_qe12f")
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxEmpty_8qtwp")
+Button/styles/pressed = SubResource("StyleBoxFlat_dy7ct")
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qe12f")
+
+[node name="Bg_color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Safe_container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="Menu_box" type="VBoxContainer" parent="Safe_container"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="Safe_container/Menu_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "ROOT FINDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu_grid" type="GridContainer" parent="Safe_container/Menu_box"]
+layout_mode = 2
+theme = SubResource("Theme_qe12f")
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="Newton" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/Newton"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("1_06t4h")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/Newton"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Newton Raphson"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bisect" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/Bisect"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("2_7vrkn")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/Bisect"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Bisection method"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Secant" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/Secant"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("3_fu7sn")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/Secant"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Secant Method"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="False" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+modulate = Color(1, 1, 1, 0.215686)
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+disabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/False"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("4_glbon")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/False"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "False Position"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fixed" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+modulate = Color(1, 1, 1, 0.215686)
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+disabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/Fixed"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("5_nlkkf")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/Fixed"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Fixed Point"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="Safe_container/Menu_box/menu_grid"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Safe_container/Menu_box/menu_grid/Options"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 250.0
+texture = ExtResource("6_nlkkf")
+
+[node name="Label" type="Label" parent="Safe_container/Menu_box/menu_grid/Options"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 254.0
+offset_right = 300.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/Newton" to="." method="_on_newton_pressed"]
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/Bisect" to="." method="_on_bisect_pressed"]
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/Secant" to="." method="_on_secant_pressed"]
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/False" to="." method="_on_false_pressed"]
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/Fixed" to="." method="_on_fixed_pressed"]
+[connection signal="pressed" from="Safe_container/Menu_box/menu_grid/Options" to="." method="_on_options_pressed"]

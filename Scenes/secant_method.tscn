@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0f5xmiauv8l"]
+
+[ext_resource type="Script" uid="uid://dnpkadbf603fo" path="res://Scenes/secant_method.gd" id="1_w2onb"]
+
+[sub_resource type="Theme" id="Theme_sjcf0"]
+Button/styles/normal = null
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjcf0"]
+bg_color = Color(0.162066, 0.162066, 0.162066, 0.109804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="Theme" id="Theme_1b7a6"]
+Label/styles/normal = SubResource("StyleBoxFlat_sjcf0")
+
+[node name="Secant_Method" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w2onb")
+
+[node name="Bg_color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Safe_container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="Container_Box" type="VBoxContainer" parent="Safe_container"]
+layout_mode = 2
+theme = SubResource("Theme_sjcf0")
+theme_override_constants/separation = 50
+
+[node name="Header" type="HBoxContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Button" type="Button" parent="Safe_container/Container_Box/Header"]
+layout_mode = 2
+text = "BACK"
+
+[node name="Title" type="Label" parent="Safe_container/Container_Box/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Secant Method"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Function_contaier" type="HBoxContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+
+[node name="function_label" type="Label" parent="Safe_container/Container_Box/Function_contaier"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "F(x): "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="function_input" type="LineEdit" parent="Safe_container/Container_Box/Function_contaier"]
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+placeholder_text = "(x^3) - (17*x) + 12"
+
+[node name="Info_f" type="Label" parent="Safe_container/Container_Box/Function_contaier"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_font_sizes/font_size = 18
+text = "Function of X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Derivative_Container" type="HBoxContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="A_var_label" type="Label" parent="Safe_container/Container_Box/Derivative_Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "xk-1: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="xk_MOne_var_input" type="LineEdit" parent="Safe_container/Container_Box/Derivative_Container"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_length = 20
+virtual_keyboard_type = 2
+
+[node name="B_var_label" type="Label" parent="Safe_container/Container_Box/Derivative_Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "xk:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Xk_input" type="LineEdit" parent="Safe_container/Container_Box/Derivative_Container"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_length = 20
+virtual_keyboard_type = 2
+
+[node name="Cal_button_container" type="HBoxContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+
+[node name="cal" type="Button" parent="Safe_container/Container_Box/Cal_button_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CALCULATRE"
+
+[node name="Calculate_container" type="HBoxContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Safe_container/Container_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Safe_container/Container_Box/ScrollContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1b7a6")
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Safe_container/Container_Box/Header/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Safe_container/Container_Box/Cal_button_container/cal" to="." method="_on_cal_pressed"]
